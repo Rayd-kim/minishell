@@ -4,31 +4,30 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <dirent.h>
-/*
+#include "libft/libft.h"
+
+char	**minishell_split(char const *s);
+
+
 int main(void)
 {
 	char	*temp;
+	char	**split;
 
+	while (1)
+	{
 	temp = readline("minishell >>");
-	printf ("%s", temp);
-	free (temp);
-	printf ("\n");
-	//rl_on_new_line();
-	//rl_replace_line ("", 0);
-	rl_redisplay();
+	split = minishell_split (temp);
+	if (split == NULL)
+	{
+		printf("ERROR\n");
+		return (1);
+	}
+	// for (int i = 0; split[i] != NULL; i++)
+	// 	printf ("%d번째 %s\n",i, split[i]);
+	// for (int i = 0; split[i] != NULL; i++)
+	// 	free(split[i]);
+	free (split);
+	}
 	return (0);
-}
-*/
-
-int	main(void)
-{
-	DIR *a;
-
-	a = opendir ("../minishell");
-	printf("%p\n", a);
-	printf("%d\n", a->__dd_fd);
-	printf("%ld\n", a->__dd_loc);
-	printf("%ld\n", a->__dd_size);
-	printf("%d\n", a->__dd_len);
-	return 0;
 }
