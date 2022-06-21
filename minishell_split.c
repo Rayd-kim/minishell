@@ -100,9 +100,7 @@ char **cut_str (char *s, int num)
 		i = temp + 1;
 	}
 	printf ("%d\n", k);
-	printf ("split %s\n", split[0]);
-	// split[k] = NULL;
-	printf ("split %s\n", split[0]);
+	split[k] = NULL;
 	return (split);
 }
 
@@ -118,7 +116,7 @@ char	**minishell_split (char *s)
 	if (split == 0)
 		return (NULL);
 	split = cut_str (s, num);
-	// for (int i = 0; split[i] != NULL; i++)
-	// 	printf ("%d번째 %s\n",i, split[i]);
+	for (int i = 0; split[i] != NULL; i++)
+		printf ("%d번째 %s\n",i, split[i]);
 	return (split);
 }
